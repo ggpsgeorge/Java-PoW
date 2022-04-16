@@ -1,17 +1,18 @@
-import java.security.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Block {
     
     private long nounce;
     private String previousHash;
     private String transactionData;
-    private Timestamp timestamp;
+    private String timestamp;
     
-    public Block(){
+    public Block(String previousHash, String transactionData){
         this.nounce = 0;
-        this.previousHash = "0";
-        this.transactionData = "";
-        this.timestamp = null;
+        this.previousHash = previousHash;
+        this.transactionData = transactionData;
+        this.timestamp = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
     }
 
     public long getNounce() {
@@ -38,11 +39,11 @@ public class Block {
         this.transactionData = transactionData;
     }
 
-    public Timestamp getTimestamp() {
+    public String getTimestamp() {
         return this.timestamp;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
+    public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
 

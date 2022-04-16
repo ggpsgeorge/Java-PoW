@@ -1,3 +1,4 @@
+import java.security.Timestamp;
 import java.util.ArrayList;
 
 public class Blockchain {
@@ -6,8 +7,14 @@ public class Blockchain {
     private ArrayList<Block> chain;
 
     public Blockchain(){
-        this.block = new Block();
-        this.chain = null;
+        this.block = new Block("0", "");
+        this.chain = new ArrayList<Block>();
+    }
+
+    public void  printChain(){
+        for(Block tempBlock : chain ){
+            System.out.println(tempBlock.toString());
+        }
     }
 
     public Block getBlock() {
