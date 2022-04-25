@@ -4,6 +4,7 @@ public class App {
         Blockchain blockchain = new Blockchain();
         Block genBlock = blockchain.getBlock();
         String hash = (Hashing.proof_of_work(genBlock));
+        System.out.println(hash);
         blockchain.setBlock(genBlock);
         genBlock = blockchain.getBlock();
         blockchain.getChain().add(genBlock);
@@ -13,6 +14,7 @@ public class App {
         while(count < 10){
             Block block = new Block(hash, "");
             hash = (Hashing.proof_of_work(block));
+            System.out.println(hash);
             blockchain.getChain().add(block);
             count++;
         }

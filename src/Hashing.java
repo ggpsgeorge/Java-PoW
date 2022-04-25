@@ -5,9 +5,9 @@ import java.security.NoSuchAlgorithmException;
   
 public class Hashing {
     public static byte[] hash_256(Block block)throws NoSuchAlgorithmException{
-        String Sblock = block.toString();
+        String sblock = block.toString();
         MessageDigest message = MessageDigest.getInstance("SHA-256");
-        return message.digest(Sblock.getBytes(StandardCharsets.UTF_8));
+        return message.digest(sblock.getBytes(StandardCharsets.UTF_8));
     }
 
     public static String toHexString(byte[] hash){
@@ -21,7 +21,7 @@ public class Hashing {
     }
 
     public static boolean isHashOk(String hash){
-        if(hash.substring(0, 3).equals("fff")){
+        if(hash.substring(0, 4).equals("ffff")){
             return true;
         }
 
@@ -43,7 +43,4 @@ public class Hashing {
         return hash;
     }
 
-    public static String findHash(Block block) throws NoSuchAlgorithmException{
-        return toHexString(hash_256(block));
-    }
 }
